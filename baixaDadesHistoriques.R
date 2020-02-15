@@ -10,5 +10,5 @@ noms_Stock<-planaHtml %>% html_nodes("div.col-md-4.col-md-offset-1") %>% html_no
 urls_Stock<-nomStock<-planaHtml %>% html_nodes("div.col-md-4.col-md-offset-1") %>% html_nodes("p")%>%html_nodes("a")%>%html_attr("href")
 
 urls_Stock<-urls_Stock[grep(x = urls_Stock,pattern = ".csv")]
-
-dades_stock<-read.csv(url(paste0(url_2,urls_Stock[1])))
+urls_Stock<-data.frame(noms_Stock,urls_Stock)
+dades_stock<-read.csv(url(paste0(url_2,urls_Stock$urls_Stock[1])))
